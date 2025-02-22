@@ -14,7 +14,7 @@ PADDLE_WIDTH, PADDLE_HEIGHT = 20, 100
 BALL_RADIUS = 7
 
 SCORE_FONT = pygame.font.SysFont("comicsans", 50)
-WINNING_SCORE = 10
+WINNING_SCORE = 5
 
 class Paddle:
     COLOUR = WHITE
@@ -155,14 +155,24 @@ def main():
             left_score += 1
             ball.reset()
 
+        won = False
         if left_score >= WINNING_SCORE:
-            ball.reset()
-            left_paddle.reset()
-            right_paddle.reset()
+            won = True
+            window_text = "Left Player Won!"
         elif right_score >= WINNING_SCORE:
+            won = True
+            window_text = "Right Player Won!"
+
+        if won:
+            text = SCORE_FONT.render(window_text, 1, WHITE)
+            WINDOW.blit(text, (WIDTH//2 - text.get_width()//2, HEIGHT//2 - text.get_height()//2))
+            pygame.display.update()
+            pygame.time.delay(5000)
             ball.reset()
             left_paddle.reset()
             right_paddle.reset()
+            left_score = 0
+            right_score = 0
 
     pygame.quit()
 

@@ -51,6 +51,3 @@ This project is a classic implementation of the Pong game using Python's `turtle
 - The game window can be closed by clicking the close button on the window.
 
 ---
-
-Feel free to modify this `README.md` to better suit your project's specifics. Let me know if you need any more help!
-
